@@ -317,6 +317,12 @@ img {
     color: #fff;
     padding: 110px 0 120px;
     margin-top: 48px;
+    overflow: hidden;
+}
+
+.values .container {
+    position: relative;
+    z-index: 2;
 }
 
 .values h2 {
@@ -362,18 +368,30 @@ img {
 .orn {
     position: absolute;
     pointer-events: none;
+    z-index: 1;
+    opacity: .35;
 }
 
 .orn-cone {
-    right: 3%;
+    right: 2%;
     bottom: 14px;
-    width: 150px;
+    width: 120px;
 }
 
 .orn-roll {
-    right: 15%;
+    right: 9%;
     bottom: 10px;
-    width: 240px;
+    width: 170px;
+}
+
+@media (min-width: 1400px) {
+    .orn-cone {
+        right: max(2%, calc((100% - 1320px) / 2 + 10px));
+    }
+
+    .orn-roll {
+        right: max(9%, calc((100% - 1320px) / 2 + 120px));
+    }
 }
 
 .process {
