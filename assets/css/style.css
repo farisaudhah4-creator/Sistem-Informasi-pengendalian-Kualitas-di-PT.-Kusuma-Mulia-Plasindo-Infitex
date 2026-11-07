@@ -147,21 +147,6 @@ img {
     background-image: url(../img/deco/tumpal-brown.png);
 }
 
-.topbar {
-    background: var(--brown);
-    color: #d8c4a8;
-    font-size: .8rem;
-    padding: .45rem 0;
-}
-
-.topbar a {
-    text-decoration: none;
-}
-
-.topbar a:hover {
-    color: var(--amber);
-}
-
 #mainNav {
     box-shadow: 0 2px 14px rgba(36, 20, 13, .1);
     z-index: 1030;
@@ -307,7 +292,6 @@ img {
     object-fit: cover;
     border-radius: 12px;
     margin-bottom: 1.4rem;
-    cursor: zoom-in;
 }
 
 .story-card .nav-link {
@@ -426,7 +410,6 @@ img {
     height: 100%;
     min-height: 320px;
     object-fit: cover;
-    cursor: zoom-in;
 }
 
 .step-card:nth-child(even) {
@@ -471,7 +454,6 @@ img {
     height: 100%;
     min-height: 160px;
     object-fit: cover;
-    cursor: zoom-in;
 }
 
 .track-progress {
@@ -489,7 +471,6 @@ img {
     height: 100%;
     min-height: 360px;
     object-fit: cover;
-    cursor: zoom-in;
     display: block;
 }
 
@@ -540,7 +521,6 @@ img {
 
 .chart-img {
     width: 100%;
-    cursor: zoom-in;
     box-shadow: 0 12px 34px rgba(36, 20, 13, .18);
 }
 
@@ -593,18 +573,22 @@ img {
     line-height: 1.4;
 }
 
-.product-cta {
+.product-info {
     background: var(--brown);
     color: #fff;
     border: 0;
 }
 
-.product-cta h3 {
-    color: var(--amber);
-    font-size: 1.6rem;
+.product-info .kicker {
+    color: #d8c4a8;
 }
 
-.product-cta p {
+.product-info h3 {
+    color: var(--amber);
+    font-size: 2.4rem;
+}
+
+.product-info p {
     color: #d8c4a8;
 }
 
@@ -753,10 +737,6 @@ img {
     --bg: url(../img/latar-ajakan-3.jpg);
 }
 
-.cta-4 {
-    --bg: url(../img/latar-ajakan-4.jpg);
-}
-
 .cta-col h3 {
     font-size: 1.7rem;
 }
@@ -816,21 +796,22 @@ img {
     position: relative;
     background: var(--brown);
     color: #fff;
-    margin-top: 90px;
-    padding: 70px 0 20px;
+    margin-top: 50px;
+    padding: 56px 0 24px;
 }
 
 .site-footer h5 {
     color: var(--amber);
     font-weight: 900;
-    font-size: 1rem;
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
 }
 
 .site-footer a,
 .site-footer p,
 .site-footer li {
     color: #d8c4a8;
-    font-size: .92rem;
+    font-size: 1.05rem;
     text-decoration: none;
 }
 
@@ -838,20 +819,8 @@ img {
     color: var(--amber);
 }
 
-.giant {
-    font-size: clamp(5rem, 19vw, 17rem);
-    font-weight: 900;
-    line-height: .9;
-    color: var(--amber);
-    opacity: .12;
-    white-space: nowrap;
-    margin: 36px 0 6px;
-    user-select: none;
-    overflow: hidden;
-}
-
 .copy {
-    font-size: .8rem;
+    font-size: .95rem;
     color: #a38b74;
 }
 
@@ -945,4 +914,9 @@ img {
     .value b {
         font-size: 3.2rem;
     }
+}
+
+#productGrid > :target .product-card {
+    border-color: var(--amber);
+    box-shadow: 0 0 0 3px var(--amber);
 }

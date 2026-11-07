@@ -1,5 +1,3 @@
-const WA_NUMBER = '6281952764147';
-
 const navLinks = document.querySelectorAll('#navMenu .nav-link');
 
 function updateActiveLink() {
@@ -82,17 +80,6 @@ document.getElementById('trackPrev').addEventListener('click', function () {
 });
 
 
-const photoModal = new bootstrap.Modal(document.getElementById('photoModal'));
-const photoModalImg = document.getElementById('photoModalImg');
-
-document.querySelectorAll('.zoom').forEach(function (img) {
-    img.addEventListener('click', function () {
-        photoModalImg.src = img.src;
-        photoModal.show();
-    });
-});
-
-
 const filterButtons = document.querySelectorAll('#productFilter .nav-link');
 const productItems = document.querySelectorAll('#productGrid > [data-group]');
 
@@ -112,14 +99,20 @@ filterButtons.forEach(function (button) {
 
 
 const fabrics = [
-    { name: 'Kain Rayon', img: 'kain-rayon', score: { harian: 2, adem: 3 }, why: 'Lembut, halus, dan berdaya serap tinggi. Enak jatuhnya untuk kemeja, celana, dan gaun.' },
-    { name: 'Kain Katun', img: 'kain-katun', score: { harian: 2, adem: 3, awet: 1 }, why: 'Nyaman dan menyerap keringat, pilihan aman untuk kaus dan pakaian sehari-hari.' },
-    { name: 'Teteron Cotton', img: 'teteron-cotton', score: { seragam: 3, awet: 3, harian: 1 }, why: 'Campuran polyester dan katun yang tidak mudah kusut dan awet, cocok untuk seragam.' },
-    { name: 'Kain Polyester', img: 'kain-polyester', score: { olahraga: 2, awet: 2, seragam: 1 }, why: 'Kuat, tahan lama, dan tidak mudah kusut. Praktis untuk pakaian kerja dan olahraga.' },
-    { name: 'Kain Spandex', img: 'kain-spandex', score: { olahraga: 3, melar: 3 }, why: 'Melar lalu kembali ke bentuk semula, ideal untuk pakaian ketat dan olahraga.' },
-    { name: 'Kain Drill', img: 'kain-drill', score: { seragam: 3, tebal: 3 }, why: 'Tebal, kuat, dan tidak mudah robek. Teman setia seragam dan pakaian kerja.' },
-    { name: 'Polyester Felt', img: 'polyester-felt', score: { kerajinan: 3, tebal: 2 }, why: 'Padat dan kaku, cocok untuk kerajinan, alas, dan perlengkapan.' }
+    { name: 'Kain Rayon', anchor: 'produk-rayon', img: 'kain-rayon', score: { harian: 2, adem: 3 }, why: 'Lembut, halus, dan berdaya serap tinggi. Enak jatuhnya untuk kemeja, celana, dan gaun.' },
+    { name: 'Kain Katun', anchor: 'produk-katun', img: 'kain-katun', score: { harian: 2, adem: 3, awet: 1 }, why: 'Nyaman dan menyerap keringat, pilihan aman untuk kaus dan pakaian sehari-hari.' },
+    { name: 'Teteron Cotton', anchor: 'produk-tc', img: 'teteron-cotton', score: { seragam: 3, awet: 3, harian: 1 }, why: 'Campuran polyester dan katun yang tidak mudah kusut dan awet, cocok untuk seragam.' },
+    { name: 'Kain Polyester', anchor: 'produk-polyester', img: 'kain-polyester', score: { olahraga: 2, awet: 2, seragam: 1 }, why: 'Kuat, tahan lama, dan tidak mudah kusut. Praktis untuk pakaian kerja dan olahraga.' },
+    { name: 'Kain Spandex', anchor: 'produk-spandex', img: 'kain-spandex', score: { olahraga: 3, melar: 3 }, why: 'Melar lalu kembali ke bentuk semula, ideal untuk pakaian ketat dan olahraga.' },
+    { name: 'Kain Drill', anchor: 'produk-drill', img: 'kain-drill', score: { seragam: 3, tebal: 3 }, why: 'Tebal, kuat, dan tidak mudah robek. Teman setia seragam dan pakaian kerja.' },
+    { name: 'Polyester Felt', anchor: 'produk-felt', img: 'polyester-felt', score: { kerajinan: 3, tebal: 2 }, why: 'Padat dan kaku, cocok untuk kerajinan, alas, dan perlengkapan.' }
 ];
+
+document.addEventListener('click', function (e) {
+    if (e.target.closest('a[href^="#produk-"]')) {
+        document.querySelector('#productFilter [data-filter="all"]').click();
+    }
+});
 
 const answers = {};
 const pickerResult = document.getElementById('pickerResult');
@@ -136,15 +129,12 @@ function showRecommendation() {
         }
     });
 
-    const message = 'Halo, saya tertarik dengan ' + best.name + '. Bisa dibantu?';
-    const link = 'https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent(message);
-
     pickerResult.innerHTML =
         '<img src="assets/img/products/' + best.img + '.png" alt="' + best.name + '">' +
         '<div>' +
         '<h3>' + best.name + '</h3>' +
         '<p>' + best.why + '</p>' +
-        '<a class="btn btn-kmp rounded-pill" target="_blank" rel="noopener" href="' + link + '">Tanya ' + best.name + '</a>' +
+        '<a class="btn btn-kmp rounded-pill" href="#' + best.anchor + '">Lihat ' + best.name + '</a>' +
         '</div>';
     pickerResult.classList.remove('d-none');
 }
